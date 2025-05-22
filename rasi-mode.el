@@ -1,4 +1,4 @@
-;;; rasi-mode.el --- Major mode for editing RASI files.
+;;; rasi-mode.el --- Major mode for editing RASI configuration files -*- lexical-binding: t -*-
 
 ;; Copyright © 2025, by Ta Quang Trung
 
@@ -6,6 +6,7 @@
 ;; Version: 0.0.1
 ;; Created: 22 May, 2025
 ;; Keywords: languages
+;; Package-Requires: ((emacs "24.3"))
 ;; Homepage: https://github.com/taquangtrung/emacs-rasi-mode
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -130,7 +131,6 @@
       (back-to-indentation)
       (let* ((ppss (syntax-ppss))
              (depth (car ppss))
-             (paren-start-pos (cadr ppss))
              (base (* tab-width depth)))
         (unless (= depth 0)
           (setq indent base)
@@ -140,7 +140,7 @@
                 ((looking-at "\s*:=")
                  ;; indent for multiple-line assignment
                  (setq indent (+ base (* 2 tab-width))))
-                ((looking-back "\s*:=\s*\n\s*")
+                ((looking-back "\s*:=\s*\n\s*" nil nil)
                  ;; indent for multiple-line assignment
                  (setq indent (+ base (* 2 tab-width))))))))
     indent))
