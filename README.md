@@ -4,7 +4,7 @@ Emacs major mode for editing the [RASI configuration file format of Rofi](https:
 
 ## Screenshot
 
-TODO
+![rasi-mode](screenshots/rasi-mode.png)
 
 ## Installation
 
