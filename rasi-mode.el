@@ -113,7 +113,7 @@
   (let ((pos (- (point-max) (point)))
         (indent (or indent (rasi--calculate-indentation)))
         (shift-amount nil)
-        (beg (progn (beginning-of-line) (point))))
+        (beg (line-beginning-position)))
     (skip-chars-forward " \t")
     (if (null indent)
         (goto-char (- (point-max) pos))
